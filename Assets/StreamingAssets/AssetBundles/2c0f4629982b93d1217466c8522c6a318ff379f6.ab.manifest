@@ -1,0 +1,25 @@
+ManifestFileVersion: 0
+CRC: 910458475
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: c1aa2a9e05d70bd5345a1484e6c5dce7
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 8aace1438bafa4e420c5efe67af5f31e
+HashAppended: 0
+ClassTypes:
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: -667331979, guid: 89f0137620f6af44b9ba852b4190e64e, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+Assets:
+- Assets/TextMesh Pro/Examples & Extras/Fonts/huawenkaiti SDF.asset
+Dependencies:
+- "I:/\u65B0\u5EFA\u6587\u4EF6\u5939/Assets/StreamingAssets/AssetBundles/d26b38c2399d9aa68c11320886fe3e3234be2fac.ab"

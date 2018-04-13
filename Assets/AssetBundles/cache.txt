@@ -1,0 +1,158 @@
+0.1.0
+Assets\Prefabs\UI\UIBattle.prefab
+c258f1c99c7e4783e9acb5a78fd3b52da9d56b24
+0
+f90d7a506abdc2b4c383771da2ba290d
+0
+Assets\Prefabs\UI\UICard.prefab
+af5de69949dcee0fa0c4071e8c23cec9456fd1d3
+0
+1d6d0d5faa85ebbe20088cd552f1408a
+0
+Assets\Prefabs\UI\UICardPad.prefab
+e5390bdb7af8dd40bedc72fd2cdf475b8975492e
+0
+7eac59a28a7658bc1d15d024d42b662f
+1
+Assets\Res\Texture\ProfitBg.png
+Assets\Prefabs\UI\UIEnd.prefab
+a1f66406a778727e0b13ad3ec753e958f243c398
+0
+b4a6d3f509e9d72c693862297ca13bdc
+1
+Assets\TextMesh Pro\Examples & Extras\Fonts\huawenkaiti.ttf
+Assets\Prefabs\UI\UIGameRound.prefab
+4d6d2f4bb8c0b39a24dae6b6669b41ea23eb0773
+0
+26b05978be6fca469e49202593471824
+4
+Assets\Res\Texture\ProfitBg.png
+Assets\TextMesh Pro\Examples & Extras\Fonts\huawenkaiti.ttf
+Assets\TextMesh Pro\Resources\Fonts & Materials\LiberationSans SDF.asset
+Assets\TextMesh Pro\Examples & Extras\Fonts\huawenkaiti SDF.asset
+Assets\Prefabs\UI\UIHistory.prefab
+82386002d4a56f46833cfea9eaba348be6a7a56d
+0
+9d6204d685eb9a2ba124609fcd5681ab
+0
+Assets\Prefabs\UI\UIMain.prefab
+8e66d8f0b37bcff57fff11f5ddeee0f39c6c6127
+0
+91d1c956ec0c25ecd13c60866dbfe6d2
+0
+Assets\Prefabs\UI\UIMainPage.prefab
+2188d27ff6881106fd02d686256a6c8326114e1d
+0
+4c180df877d514065ab98d5004b428b3
+3
+Assets\TextMesh Pro\Examples & Extras\Fonts\huawenkaiti.ttf
+Assets\TextMesh Pro\Resources\Fonts & Materials\LiberationSans SDF.asset
+Assets\TextMesh Pro\Examples & Extras\Fonts\huawenkaiti SDF.asset
+Assets\Prefabs\UI\UINotice.prefab
+7a16fa830265944bbbba05a99c1d71a287907623
+0
+e412fe1a7f77555635a652c3aa7af4f6
+1
+Assets\TextMesh Pro\Examples & Extras\Fonts\huawenkaiti.ttf
+Assets\Prefabs\UI\UIRoot.prefab
+03f6fdef828fad1ca5b57a14c2747c2befc007c6
+0
+42b30e5e5ebd696446b6c4869c7af33b
+0
+Assets\Prefabs\UI\UIRound.prefab
+5ab30917cf5ae441b83a7edd089f766699ab5f1e
+0
+2c7138beddcb8fcf07bfeabbe60d535b
+4
+Assets\Res\Texture\ProfitBg.png
+Assets\TextMesh Pro\Examples & Extras\Fonts\huawenkaiti.ttf
+Assets\TextMesh Pro\Resources\Fonts & Materials\LiberationSans SDF.asset
+Assets\TextMesh Pro\Examples & Extras\Fonts\huawenkaiti SDF.asset
+Assets\Prefabs\UI\UISkill.prefab
+be98284bb61589714cb7f10c6eb99551e63c7f87
+0
+8e8f010fecd318c74ca8a984b4f459e4
+0
+Assets\Prefabs\UI\UITopbar.prefab
+833dde80a0cd86894225f17aa7235430b7025bb6
+0
+475761f78f9431a75ef199594941c1ef
+0
+Assets\Res\DataAsset\SystemData\systemdata.asset
+570aa84d41205c85cc7042f77d2d0acbefe13daa
+0
+295246d5627bf024d87421c90f645cea
+0
+Assets\Res\Texture\ProfitBg.png
+43b34dfee1b17b639ec620f1bf8579efdbdcf874
+cf430dd9aa0eea08662ac3fa043c817ea6f15b9b
+c34e1bb5bfd3b417771cd5fc8f18b57c
+0
+Assets\TextMesh Pro\Examples & Extras\Sprites\Default Sprites.png
+f99e4fe77fea9dc37ddafc60861d93a88f09fd18
+b603dff8a719e20ae1aedd8fdf5985a5e8fc666b
+
+0
+Assets\TextMesh Pro\Examples & Extras\Fonts\huawenkaiti.ttf
+b8c38c02ad5d10f65e9d1e3d1976fd60cbf95c15
+0
+828f822ea1064d57d6396a4a4349d6c4
+0
+Assets\TextMesh Pro\Examples & Extras\Sprites\DropCap Numbers.psd
+0d1f1f91420a0b475bd7593db0c4d41e25c2cb18
+f1002a5c6073f041d2f298039020a7389af21a01
+
+0
+Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile.shader
+ed367c87facf5eeeeaa611e4afe2b2cb55ef758e
+f1b13b3d337542f8672f44fddb260e28c3d63534
+67c19ed24005054b01e2f15445c43879
+0
+Assets\TextMesh Pro\Resources\Shaders\TMP_SDF.shader
+36b5523f7e8bc8436e116109855fb224ba959553
+b4dfd328172e68901f99a0d234d20f4eddd83c7e
+
+1
+Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile.shader
+Assets\TextMesh Pro\Resources\Fonts & Materials\LiberationSans SDF.asset
+5a12a2d42ebb6983b5d4ec2ee053a7b858524dec
+0
+fcfbf610612fb0496cd2ea2c53c68a30
+1
+Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile.shader
+Assets\TextMesh Pro\Examples & Extras\Fonts\huawenkaiti SDF.asset
+725e325f7458b658e82b155cfc7a704f8f91109f
+0
+c1aa2a9e05d70bd5345a1484e6c5dce7
+1
+Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile.shader
+Assets\Res\DataAsset\deck\deck0.asset
+c8fb4f80cadea19bfec06f8caa85f45f8fc6dd2f
+0
+
+0
+Assets\Res\DataAsset\card\card0.asset
+835ce15015eb4836a717ff1396db48f44c67f1b6
+0
+
+0
+Assets\Res\DataAsset\round\round0.asset
+d7779bf5afd057fb93eff7267870acb4490df4b8
+0
+
+0
+Assets\Res\DataAsset\round\round1.asset
+fbb76f35375a1e6cbe8b09670b7e67dd1277b49b
+0
+
+0
+Assets\Res\DataAsset\round\round2.asset
+b0ccfab69f95d16302daded66631688ba69565c3
+0
+
+0
+Assets\Res\DataAsset\role\role0.asset
+7ecb36693ab706331b2bc0a26f1a4261c95fd0e7
+0
+
+0
