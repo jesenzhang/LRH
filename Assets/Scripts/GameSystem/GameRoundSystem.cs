@@ -2,89 +2,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 using VFrame.GameTools;
 using VFrame.ABSystem;
 using VFrame.UI;
 using System;
+using EnumProperty;
 
-public enum StepType
-{
-    None = 0,
-    DoChoice = 1,
-    UseCard = 2,
-    Think =3,
-    Result = 4
-}
-public enum GameCardType
-{
-    None = 0,
-    Money = 1,
-    MoneyAndFriend = 2,
-    investigation =3
-}
-[Serializable]
-public class Card : ICloneable
-{
-    public GameCardType cardType = GameCardType.None;
-    public int id;
-    public int[] Values;
-    public object Clone()
-    {
-        Card outdata = new Card
-        {
-            cardType = cardType,
-            id = id,
-            Values = (int[])Values.Clone()
-        };
-        return outdata;
-    }
-}
 
-[Serializable]
-public class RoundStep : ICloneable
-{
-    public StepType stepType= StepType.None;
-    public int[] CardList;
-    public object Clone()
-    {
-        RoundStep outdata = new RoundStep
-        {
-            stepType = stepType,
-            CardList = (int[])CardList.Clone(),
-        };
-        return outdata;
-    }
-}
-
-[Serializable]
-public class RoundData : ICloneable
-{
-    public RoundStep[] steps;
-    public object Clone()
-    {
-        RoundData outdata = new RoundData
-        {
-            steps = (RoundStep[])steps.Clone(),
-        };
-        return outdata;
-    }
-}
-[Serializable]
-public class LevelData : ICloneable
-{
-    public RoundData[] rounds;
-	public int goal = 10;
-
-    public object Clone()
-    {
-        LevelData outdata = new LevelData
-        {
-            rounds = (RoundData[])rounds.Clone(),
-        };
-        return outdata;
-    }
-}
 public class GameRoundSystem : MonoBehaviour
 {
     enum RoundState
@@ -96,34 +20,51 @@ public class GameRoundSystem : MonoBehaviour
         End = 4
     }
     public static GameRoundSystem Instance;
-
+    private void Awake()
+    {
+        Instance = this;
+    }
+    //关卡信息
     public LevelData levelData;
+    //关卡规则类型对象
     public RoundProperty roundData;
+
+    //对局中的变量
+    //系统数据读取完成标识
     private bool DataReady = false;
-     
-
+    //当前回合
     public int CurrentRound = 0;
-    public int  CurrentStep = 0;
+    //当前回合进行到的步数
+    public int CurrentStep = 0;
+    //当前关卡
     public int CurrentLevel = 0;
-
+    //当前状态最大步数
     public int MaxStep = 0;
+    //当前关卡最大回合数
     public int MaxRound = 0;
+    //关卡的总数
     public int MaxLevel = 0;
 
+    //选择合作的次数
     public int DoNum = 0;
+    //选择欺骗的次数
     public int UnDoNum = 0;
+    //使用的第一、二、三张卡牌的id 
+    //1是增加金钱 2 是调查 3 是影响NPC概率的牌
     public int card1;
     public int card2;
     public int card3;
+    //使用增加一方金钱卡时选择的自己 还是 NPC
     public int ChooseSide = 0;
-
+    //NPC友好度
     public float friendly = 0;
+    //NPC的合作概率
     public float Rate=0;
-
+    //玩家金钱
 	public int Money=0;
-
+    //强制设置的NPC合作概率
 	public float ForceNPCRate = -1;
-
+    //当前关卡剩余的回合
     public int RemainRound
     {
         get
@@ -303,8 +244,9 @@ public class GameRoundSystem : MonoBehaviour
         }
     }
 
+    //赋值给UI界面的数据对象
     object[] UIRoundData;
-
+    //剩余的步数
     public int NextActions = 0;
 
     //加载数据
@@ -312,11 +254,12 @@ public class GameRoundSystem : MonoBehaviour
     {
         DataReady = false;
 
+        //读取关卡规则信息
         if (level < GameData.Instance.SystemData.AllRounds.Length)
         {
             roundData = (RoundProperty)(GameData.Instance.SystemData.AllRounds[level]).Clone();
         }
-
+        //读取关卡的回合数 步骤等信息
         if (level < GameData.Instance.SystemData.AllLevels.Length)
         {
            
@@ -324,7 +267,9 @@ public class GameRoundSystem : MonoBehaviour
             MaxRound = levelData.rounds.Length;
             InitData();
             DataReady = true;
+            //设置UI显示数据
 			UIRoundData = new object[4] { roundData, RemainRound,StepType.None,level};
+            //显示UI
             UIManager.Instance.ShowUI<UIGameRound>(null, UIRoundData);
             StartCoroutine(StartBattle());
         }
@@ -350,12 +295,10 @@ public class GameRoundSystem : MonoBehaviour
         StartCoroutine(StartBattle());
     }
 
-    //开始
+    //开始回合 初始化数据
     public IEnumerator StartBattle()
     {
         yield return new WaitUntil(() => { return DataReady; });
-         
-
         yield return new WaitUntil(() => {
             return true;
         });
@@ -363,7 +306,7 @@ public class GameRoundSystem : MonoBehaviour
         CurrentStep = 0;
         InitStep();
     }
-
+    //计算友好度
     public float Friendly {
         get {
 			float f=0;
@@ -384,7 +327,7 @@ public class GameRoundSystem : MonoBehaviour
            
         }
     }
-
+    //计算荣誉值
     public int Hornor
     {
         get
@@ -392,7 +335,7 @@ public class GameRoundSystem : MonoBehaviour
             return 50 - UnDoNum * 10 + DoNum * 5;
         }
     }
-
+    //计算NPC合作概率
     public float NPCRate {
         get {
 			if(ForceNPCRate>0)
@@ -422,6 +365,7 @@ public class GameRoundSystem : MonoBehaviour
             return p;
         }
     }
+    //做后一回合的NPC合作概率
     public float FinalNPCRate
     {
         get
@@ -444,12 +388,13 @@ public class GameRoundSystem : MonoBehaviour
             return p;
         }
     }
+    //返回决策之后玩家的金钱
     public int EarnMoney(int type)
     {
 		Money = Money+(int)roundData.Profit[type - 1].x;
 		return Money;
     }
-
+    //使用卡片 
     public void UseCard(int card)
     {
         if (card == 1)
@@ -470,16 +415,18 @@ public class GameRoundSystem : MonoBehaviour
 
         DoStep();
     }
-    
+    //点击使用增加玩家金钱卡牌按钮
     public void Btn_PlayerClicked()
     {
         UseCard(1);
-    }
+    } 
+    //点击使用增加NPC金钱卡牌按钮
     public void Btn_NPCClicked()
     {
         UseCard(2);
     }
 
+    //根据玩家选择得到决策的结果
     public int GetResult(bool playerchoose)
     {
         int resur = 1;
@@ -504,6 +451,7 @@ public class GameRoundSystem : MonoBehaviour
         return resur;
     }
 
+    //点击合作安妮
     public void Btn_DoClicked()
     {
         DoNum++;
@@ -511,15 +459,14 @@ public class GameRoundSystem : MonoBehaviour
         StartCoroutine(ShowResult(GetResult(true)));
        
     }
+    //点击欺骗按钮
     public void Btn_UnDoClicked()
     {
         UnDoNum++;
         StartCoroutine(ShowResult(GetResult(false)));
     }
-    public void Btn_UseCard1Clicked()
-    {
-         
-    }
+ 
+    //点击使用调查卡牌
     public void Btn_UseCard2Clicked()
     {
 		if(GameData.Instance.SystemData.GameAllCards[card3].Values.Length>0){
@@ -527,11 +474,12 @@ public class GameRoundSystem : MonoBehaviour
 		}
 		UIManager.Instance.ShowUI<UINotice>(()=> {UseCard(3); }, "这个NPC有"+NPCRate*100+"%概率选择合作！");
     }
+    //点击下一步按钮
     public void Btn_NextClicked()
     {
         DoStep();
     }
-
+    //显示结果
     public IEnumerator ShowResult(int type)
     {
         UIRoundData[2] = StepType.Result;
@@ -543,6 +491,7 @@ public class GameRoundSystem : MonoBehaviour
         DoStep();
     }
 
+    //初始化当前步骤
     public void InitStep()
     {
         RoundStep step = levelData.rounds[CurrentRound].steps[CurrentStep];
@@ -550,6 +499,7 @@ public class GameRoundSystem : MonoBehaviour
         UIRoundData[1] = (object)RemainRound;
         MaxStep = levelData.rounds[CurrentRound].steps.Length;
         UIGameRound roundUI = (UIGameRound)UIManager.Instance.GetPageInstatnce<UIGameRound>();
+        //特殊步骤的特殊配置数据
         if (step.stepType == StepType.Think)
         {
             roundUI.SetFriend("判定你的名誉值为"+Hornor, (int)FinalNPCRate * 100);
@@ -566,30 +516,38 @@ public class GameRoundSystem : MonoBehaviour
             NextActions = 1;
 
     }
+    //执行一个步骤
     public void DoStep()
     {
         NextActions--;
         CheckStep();
     }
 
+    /// <summary>
+    /// 检查是否结束
+    /// </summary>
     public void CheckStep()
     {
+        //当前步骤所有操作执行完
         if (NextActions <= 0)
         {
+            //步骤加一 初始化
             CurrentStep++;
             if (CurrentStep < MaxStep)
             {
                 InitStep();
             }
         }
+        //当前回合所有步骤执行完
         if (CurrentStep >= MaxStep)
         {
+            //重置步骤 增加回合 初始化
             CurrentStep = 0;
             CurrentRound++;
             if(CurrentRound < MaxRound)
                 InitStep();
         }
-
+        //所有回合结束 结束关卡
         if (CurrentRound >= MaxRound)
         {
             CurrentRound = 0;
@@ -597,7 +555,7 @@ public class GameRoundSystem : MonoBehaviour
         }
 
     }
-
+    //重置变量
 	public  void ResetData()
 	{
 		CurrentRound = 0;
@@ -617,11 +575,12 @@ public class GameRoundSystem : MonoBehaviour
 		Money=0;
 		ForceNPCRate=-1;
 	}
-
+    //结束关卡
     public void EndLevel()
     {
         CurrentLevel++;
        
+        //判断关卡结果
 			if(Money>= levelData.goal)
 			{
 				if (CurrentLevel < MaxLevel)
@@ -644,23 +603,6 @@ public class GameRoundSystem : MonoBehaviour
 				UIManager.Instance.ShowUI<UINotice>(()=>{
 					ResetData();
 					LoadAsset(CurrentLevel);},"失败了！");
-
 			}
     }
-    
-
-    public void ProcessCommand()
-    {
-
-    }
-
-    public void Tick(float deltaTime, float totalTime)
-    {
-       
-    }
-    private void Awake()
-    {
-        Instance = this;
-    }
-
 }

@@ -51,7 +51,5 @@ public class GameStart : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GameRoundSystem.Instance.Tick(Time.deltaTime, Time.realtimeSinceStartup);
-
     }
 }

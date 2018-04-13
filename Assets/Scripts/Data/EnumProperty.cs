@@ -4,6 +4,22 @@ using UnityEngine;
 
  namespace EnumProperty {
 
+    public enum StepType
+    {
+        None = 0,
+        DoChoice = 1,
+        UseCard = 2,
+        Think = 3,
+        Result = 4
+    }
+    public enum GameCardType
+    {
+        None = 0,
+        Money = 1,
+        MoneyAndFriend = 2,
+        investigation = 3
+    }
+
     /// <summary>
     /// 卡牌类型
     /// </summary>

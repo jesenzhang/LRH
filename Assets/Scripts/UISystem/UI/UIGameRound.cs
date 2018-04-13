@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
 using StrOpe = VFrame.StringOperationUtil.OptimizedStringOperation;
+using EnumProperty;
 
 public class UIGameRound : UIPage
 {
@@ -120,7 +121,6 @@ public class UIGameRound : UIPage
             UIcollider.SetActive(true);
             btn_Player.enabled = true;
             btn_NPC.enabled = true;
-            GameRoundSystem.Instance.Btn_UseCard1Clicked();
         });
 
         btn_Card2 = this.transform.Find("btn_Card2").GetComponent<Button>();
